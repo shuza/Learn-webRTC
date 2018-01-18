@@ -19,7 +19,6 @@ wss.on('connection', function(connection){
 		
 		switch(data.type){
 			case "login":
-				console.log("User logged: ", data.name);
 				
 				// if anyone logged in with this username the refuse
 				if(users[data.name]){
@@ -28,6 +27,8 @@ wss.on('connection', function(connection){
 						success: false
 					});
 				}else{
+					console.log("User logged: ", data.name);
+					
 					// save user connection on the server
 					connection.name = data.name;
 					users[data.name] = connection;
